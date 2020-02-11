@@ -23,11 +23,15 @@ const Boton = styled.button`
   font-size: 2rem;
   border: 2px solid black;
 `;
-function App() {
-  const consultarAPI = () => {
-    console.log("consultando.....");
-  };
 
+function App() {
+  const consultarAPI = async () => {
+    const api = await fetch(
+      "https://breaking-bad-quotes.herokuapp.com/v1/quotes"
+    );
+    const frase = await api.json();
+    console.log(frase[0]);
+  };
   return (
     <Contenedor>
       <Boton onClick={consultarAPI}>Obtener Frase</Boton>
